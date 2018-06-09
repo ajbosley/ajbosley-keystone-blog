@@ -1,0 +1,51 @@
+<title>AJBosley| Blog</title>
+<div style="width:90%;margin-left:5%;margin-right:5%;">
+	<div class="row">
+		<h1 class="col m12 l12 grey-text text-darken-3 center hide-on-small-only">Blog Posts and Ramblings</h1>
+		<h2 class="col s12 grey-text text-darken-3 center hide-on-med-and-up">Ramblings</h2>
+		<!-- Category start -->
+		<div class="col s4 m4 l4 hide-on-med-and-down right">
+			<div>
+				<ul class="collection with-header">
+					<li class="collection-item">
+						<h3>Categories</h3>
+					</li>
+					<li class="collection-item"><a href="/blog" class="active list-group-item grey-text text-darken-3">All Categories</a></li>
+					{{# each data.categories }}
+						{{#if postCount}}
+							<li class="collection-item"><a href="{{categoryUrl key}}" class="false list-group-item grey-text text-darken-3">{{name}}</a><span class="badge">{{postCount}} posts</span></li>
+						{{/if}}
+						{{/each}}
+				</ul>
+			</div>
+		</div>
+		<!--End of categories -->
+
+		<!-- Start of cards -->
+		{{#each data.posts.results}}
+			<div class="col s12 m12 l8">
+				<div class="card horizontal grey lighten-1">
+					<div class="card-image hide-on-small-only valign-wrapper">
+						{{#if image}}<img src="{{{cloudinaryUrl image min-height=200 crop='fit'}}}">{{/if}}
+					</div>
+					<a class="grey-text text-darken-4" href="{{postUrl slug}}">
+						<div class="card-stacked">
+							<div class="card-content">
+								<h3><span><a class="grey-text text-darken-4" href="{{postUrl slug}}">{{{title}}}</a></span></h3>
+								<p><a class="grey-text text-darken-4" href="{{postUrl slug}}">{{{content.brief}}}</a></p>
+							</div>
+							<div class="card-action">
+								<a class="purple-text text-darken-2" href="{{postUrl slug}}">Read now</a>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+
+
+
+</div>
+</div>
+<div class="center">{{>pagination}}</div>
